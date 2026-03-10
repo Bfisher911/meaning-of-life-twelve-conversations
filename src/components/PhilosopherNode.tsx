@@ -9,6 +9,8 @@ interface Props {
     radius: number; // distance from center
 }
 
+import { motion } from 'framer-motion';
+
 export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onToggleComplete, angle, radius }) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -23,7 +25,15 @@ export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onT
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="relative group flex flex-col items-center">
+            <motion.div
+                className="relative group flex flex-col items-center"
+                drag
+                dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                dragElastic={0.4}
+                whileDrag={{ scale: 1.1, zIndex: 60 }}
+                whileTap={{ cursor: 'grabbing' }}
+                style={{ cursor: 'grab' }}
+            >
                 {/* Hover Card (Tooltip) */}
                 {isHovered && (
                     <div className="absolute bottom-full mb-4 w-72 p-5 rounded-xl bg-[var(--color-cosmic-card)] border border-[var(--color-cosmic-highlight)] backdrop-blur-md shadow-2xl text-left z-50 pointer-events-none animate-in fade-in slide-in-from-bottom-2 duration-200">
@@ -65,7 +75,7 @@ export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onT
                         {isCompleted ? '✓ Completed' : 'Mark Complete'}
                     </button>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

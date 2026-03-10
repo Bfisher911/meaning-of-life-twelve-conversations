@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Props {
     isUnlocked: boolean;
@@ -11,10 +12,16 @@ export const OracleNode: React.FC<Props> = ({ isUnlocked, completionsCount, requ
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <div
+        <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            drag
+            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+            dragElastic={0.4}
+            whileDrag={{ scale: 1.05, zIndex: 60 }}
+            whileTap={{ cursor: 'grabbing' }}
+            style={{ cursor: 'grab' }}
         >
             <div className="relative group flex flex-col items-center justify-center">
                 {/* Hover Card */}
@@ -69,6 +76,6 @@ export const OracleNode: React.FC<Props> = ({ isUnlocked, completionsCount, requ
                     </p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
