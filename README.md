@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# The Meaning of Life: Twelve Conversations
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, visually elegant single-page application exploring twelve philosophical perspectives on the meaning of life, culminating in a synthesized conversation with the "Oracle of Twelve Voices". 
 
-Currently, two official plugins are available:
+## Overview
+This application functions as a "philosophy constellation map". 12 philosophers orbit a central Oracle hub. 
+Students hover over philosophers to read clear, witty summaries of their views. Clicking a philosopher opens a curated BoodleBox chatbot in a new tab. 
+Returning students can "Mark Complete", and after completing at least 5 philosopher conversations, the central Oracle is unlocked.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup and Installation
 
-## React Compiler
+1. **Prerequisites**: Make sure you have [Node.js](https://nodejs.org/) installed.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` in your browser.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+4. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+   The production-ready static files will be exported to the `/dist` directory.
 
-## Expanding the ESLint configuration
+## Editing Content (Instructors)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+All philosopher metadata, including names, module titles, witty hover summaries, "why choose" text, and chatbot URLs are stored in a single configuration file.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Location**: `src/data/philosophers.ts`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**To Edit a Philosopher**:
+Open the file and locate the `philosophers` array. You can freely change any text field or URL.
+```typescript
+{
+  id: 'plato',
+  name: 'Plato',
+  moduleTitle: 'The Allegory of the Cave',
+  chatbotUrl: 'https://box.boodle.ai/a/@Module1Plato...',
+  summary: 'Plato thinks you are staring at shadows...',
+  whyChoose: 'Choose Plato if you suspect reality is an illusion...'
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**To Edit the Oracle**:
+At the bottom of the same file, locate the `oracle` object.
+```typescript
+export const oracle = {
+  id: 'oracle',
+  name: 'Oracle of Twelve Voices',
+  chatbotUrl: 'https://box.boodle.ai/a/@TheOracleofTwelveVoices',
+};
 ```
+
+## Technical Details
+* Built with **React** and **Vite**
+* Styled using **Tailwind CSS v4**
+* Custom CSS animations for the gentle orbital layout
+* Persistent browser state tracking using `localStorage`
