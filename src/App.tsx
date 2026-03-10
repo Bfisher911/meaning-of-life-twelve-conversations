@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Constellation } from './components/Constellation';
 import { Instructions } from './components/Instructions';
+import { BackgroundQuotes } from './components/BackgroundQuotes';
 
 function App() {
   // Try to load completions from localStorage
@@ -49,6 +50,7 @@ function App() {
 
       {/* Main Interactive Map */}
       <main>
+        <BackgroundQuotes />
         <Constellation
           completions={completions}
           onToggleComplete={handleToggleComplete}
