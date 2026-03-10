@@ -42,8 +42,8 @@ export const OracleNode: React.FC<Props> = ({ isUnlocked, completionsCount, requ
                         if (!isUnlocked) e.preventDefault();
                     }}
                     className={`w-32 h-32 rounded-full flex flex-col items-center justify-center transition-all duration-700 border-4 relative ${isUnlocked
-                            ? 'bg-gradient-to-br from-[#112240] to-[var(--color-cosmic-highlight)] border-[#66fcf1] shadow-[0_0_40px_rgba(102,252,241,0.6)] hover:scale-105 cursor-pointer hover:shadow-[0_0_60px_rgba(102,252,241,0.8)]'
-                            : 'bg-gray-900 border-gray-700 text-gray-600 shadow-inner cursor-not-allowed opacity-80'
+                        ? 'bg-gradient-to-br from-[#112240] to-[var(--color-cosmic-highlight)] border-[#66fcf1] shadow-[0_0_40px_rgba(102,252,241,0.6)] hover:scale-105 cursor-pointer hover:shadow-[0_0_60px_rgba(102,252,241,0.8)]'
+                        : 'bg-gray-900 border-gray-700 text-gray-600 shadow-inner cursor-not-allowed opacity-80'
                         }`}
                 >
                     <span className={`text-4xl mb-1 ${isUnlocked ? 'animate-pulse' : 'opacity-50'}`}>
@@ -60,7 +60,7 @@ export const OracleNode: React.FC<Props> = ({ isUnlocked, completionsCount, requ
                 </a>
 
                 {/* Status Text under Oracle */}
-                <div className="mt-4 text-center">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 text-center w-max">
                     <p className="text-[var(--color-cosmic-accent)] font-medium bg-black/60 px-4 py-1.5 rounded-full border border-[var(--color-cosmic-highlight)]/30 backdrop-blur-sm">
                         {isUnlocked
                             ? "The Oracle is now available."

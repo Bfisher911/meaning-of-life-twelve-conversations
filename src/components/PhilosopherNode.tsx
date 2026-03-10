@@ -18,7 +18,7 @@ export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onT
 
     return (
         <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isHovered ? 'z-50' : 'z-10'}`}
             style={{ transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -48,7 +48,7 @@ export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onT
                 </a>
 
                 {/* Label & Checkbox underneath */}
-                <div className="mt-2 flex flex-col items-center">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 flex flex-col items-center w-max">
                     <span className="text-xs font-semibold whitespace-nowrap bg-black/50 px-2 py-1 rounded-md">
                         {philosopher.name}
                     </span>
