@@ -49,6 +49,7 @@ export const PhilosopherNode: React.FC<Props> = ({ philosopher, isCompleted, onT
                     href={philosopher.chatbotUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    draggable={false}
                     className={`w-16 h-16 rounded-full flex items-center justify-center text-xl shadow-lg transition-all duration-300 transform hover:scale-110 border-2 ${isCompleted
                         ? 'bg-[var(--color-cosmic-highlight)] border-white text-white shadow-[0_0_15px_var(--color-cosmic-highlight)]'
                         : 'bg-gray-800 border-gray-600 text-gray-300 hover:border-[var(--color-cosmic-accent)]'

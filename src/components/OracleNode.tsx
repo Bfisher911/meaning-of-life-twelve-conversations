@@ -45,6 +45,7 @@ export const OracleNode: React.FC<Props> = ({ isUnlocked, completionsCount, requ
                     href={isUnlocked ? oracleUrl : undefined}
                     target={isUnlocked ? "_blank" : undefined}
                     rel={isUnlocked ? "noopener noreferrer" : undefined}
+                    draggable={false}
                     onClick={(e) => {
                         if (!isUnlocked) e.preventDefault();
                     }}
